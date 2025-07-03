@@ -12,15 +12,30 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@theme{
+  --color-primary : #819A91;
+  --color-secondary : #A7C1A8;
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components{
+  .active_link {
+    @apply text-primary relative;
+  }
+  .active_link::after{
+    content: "";
+    @apply absolute border-b-4 w-[70%] mx-auto bottom-0 right-[15%] rounded-4xl;
+  }
 }
