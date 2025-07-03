@@ -1,4 +1,4 @@
-import { Card, Group, Text } from "@mantine/core";
+import { Group, } from "@mantine/core";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
