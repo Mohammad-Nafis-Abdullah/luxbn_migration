@@ -72,11 +72,11 @@ export function Header() {
                         className="lg:hidden"
                     />
                     <Drawer
-                        offset={8}
-                        radius="md"
+                        radius="sm"
                         position="right"
                         opened={opened}
                         onClose={close}
+                        size={"xs"}
                         title=""
                     >
                         {/* Drawer content */}
