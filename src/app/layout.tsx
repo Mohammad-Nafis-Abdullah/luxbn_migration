@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const roboto = Roboto({
     variable: "--font-roboto",
-    // subsets: ["latin"],
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
