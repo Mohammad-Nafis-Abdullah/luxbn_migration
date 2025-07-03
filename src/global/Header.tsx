@@ -1,19 +1,20 @@
 "use client";
 
-import { Burger } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { Affix, Burger, Drawer, Transition } from "@mantine/core";
+import { useDisclosure, useWindowScroll } from "@mantine/hooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaAngleUp } from "react-icons/fa6";
 import { SiNextdotjs } from "react-icons/si";
 
 // @flow
 export function Header() {
     const path = usePathname();
-    const [opened, { toggle }] = useDisclosure();
-
+    const [opened, { close, toggle }] = useDisclosure(false);
+    const [scroll, scrollTo] = useWindowScroll();
 
     return (
-        <header className="bg-white sticky top-0 left-0 right-0 text-black">
+        <header className="bg-white sticky top-0 left-0 right-0 text-black shadow-xs z-50">
             <div className="max-w-6xl px-3 py-5 mx-auto flex justify-between items-center">
                 <section className="inline-flex items-center gap-3">
                     <SiNextdotjs className="size-12" />
@@ -64,9 +65,35 @@ export function Header() {
 
                 {/* mobile navbar */}
                 <nav>
-                    <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />
+                    <Burger
+                        opened={opened}
+                        onClick={toggle}
+                        aria-label="Toggle navigation"
+                        className="lg:hidden"
+                    />
+                    <Drawer
+                        offset={8}
+                        radius="md"
+                        position="right"
+                        opened={opened}
+                        onClose={close}
+                        title=""
+                    >
+                        {/* Drawer content */}
+                    </Drawer>
                 </nav>
             </div>
+            <Affix position={{ bottom: 20, right: 20 }}>
+                <Transition transition="slide-up" mounted={scroll.y > 0}>
+                    {(transitionStyles) => (
+                        <FaAngleUp
+                            style={transitionStyles}
+                            onClick={() => scrollTo({ y: 0 })}
+                            className="cursor-pointer size-10 rounded-full bg-gray-800 text-white p-2"
+                        />
+                    )}
+                </Transition>
+            </Affix>
         </header>
     );
 }
