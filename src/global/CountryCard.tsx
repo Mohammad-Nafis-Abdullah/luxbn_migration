@@ -16,7 +16,7 @@ export function CountryCard({
     message,
 }: CountryCard_props) {
     return (
-        <Link href={""} className="hover:drop-shadow-lg rounded-md transition duration-300">
+        <Link href={""} className="hover:drop-shadow-lg rounded-md transition">
             <Card
                 className="flex flex-col items-center gap-3"
                 shadow="xs"

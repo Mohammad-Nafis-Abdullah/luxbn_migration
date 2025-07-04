@@ -25,9 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${roboto.variable} antialiased`}
-            >
+            <body className={`${roboto.variable} antialiased`}>
                 <MantineProvider>
                     <Top />
                     <Header />
