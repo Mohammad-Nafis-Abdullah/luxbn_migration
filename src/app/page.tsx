@@ -1,5 +1,6 @@
 import { Banner } from "./Home/Banner";
 import { ChooseCountry } from "./Home/ChooseCountry";
+import { VisaAndWork } from "./Home/VisaAndWork";
 import { WhyChooseUs } from "./Home/WhyChooseUs";
 import { WhyDifferent } from "./Home/WhyDifferent";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <ChooseCountry/>
       <WhyChooseUs/>
       <WhyDifferent/>
+      <VisaAndWork/>
     </div>
   );
 }
