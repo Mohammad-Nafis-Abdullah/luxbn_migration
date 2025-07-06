@@ -1,6 +1,7 @@
 import { Banner } from "./Home/Banner";
 import { ChooseCountry } from "./Home/ChooseCountry";
 import { WhyChooseUs } from "./Home/WhyChooseUs";
+import { WhyDifferent } from "./Home/WhyDifferent";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Banner/>
       <ChooseCountry/>
       <WhyChooseUs/>
+      <WhyDifferent/>
     </div>
   );
 }

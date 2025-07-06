@@ -89,7 +89,7 @@ export function Header() {
                         <FaAngleUp
                             style={transitionStyles}
                             onClick={() => scrollTo({ y: 0 })}
-                            className="cursor-pointer size-10 rounded-full bg-gray-800 text-white p-2"
+                            className="cursor-pointer size-10 rounded-full bg-primary text-white p-2 ring-2 ring-primary ring-offset-2"
                         />
                     )}
                 </Transition>
