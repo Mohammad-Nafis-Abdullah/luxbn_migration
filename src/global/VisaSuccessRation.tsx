@@ -19,12 +19,12 @@ export function VisaSuccessRation() {
                 professional commitment towards our students.
             </p>
             <BarChart
-                h={150}
+                h={300}
                 data={data}
                 dataKey="month"
                 type="stacked"
                 orientation="vertical"
-                yAxisProps={{ width: 80 }}
+                yAxisProps={{ width: 70 }}
                 series={[
                     { name: "rate", color: "#819A91" },
                 ]}
