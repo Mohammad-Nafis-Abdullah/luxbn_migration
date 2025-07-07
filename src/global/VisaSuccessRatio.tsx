@@ -8,7 +8,7 @@ const data = [
     { month: "Malaysia", rate: 100},
 ];
 
-export function VisaSuccessRation() {
+export function VisaSuccessRatio() {
     return (
         <div>
             <h3 className="text-4xl font-bold mb-2">
