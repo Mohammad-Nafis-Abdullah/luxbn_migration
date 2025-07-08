@@ -2,7 +2,6 @@
 "use client";
 
 import { Button, Rating } from "@mantine/core";
-import { Fragment } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import Slider, { Settings } from "react-slick";
 
@@ -96,7 +95,7 @@ export function OurStudentSay() {
             <div className="slider-container">
                 <Slider {...settings}>
                     {users?.map((user, i) => (
-                        <Fragment key={i}>
+                        <div key={i}>
                             <section className="flex justify-center gap-5 mx-2">
                                 <section className="space-y-2 grow-0 w-[35%] flex flex-col items-center">
                                     <img
@@ -135,7 +134,7 @@ export function OurStudentSay() {
                                     </Button>
                                 </section>
                             </section>
-                        </Fragment>
+                        </div>
                     ))}
                 </Slider>
             </div>
