@@ -2,6 +2,7 @@
 "use client";
 
 import { Button, Rating } from "@mantine/core";
+import { Fragment } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import Slider, { Settings } from "react-slick";
 
@@ -68,20 +69,19 @@ const users: {
 
 export function OurStudentSay() {
     const settings: Settings = {
-        dots: false,
-        fade: true,
-        infinite: true,
-        speed: 1000,
-        autoplaySpeed: 5000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        waitForAnimate: false,
         accessibility: false,
         arrows: false,
         autoplay: true,
+        autoplaySpeed: 5000,
         centerPadding: "0px",
-        className: "bg-gray-300/10 p-5 rounded-sm mt-5",
+        className: "bg-gray-300/30 p-5 rounded-lg mt-5",
+        // dots: true,
+        // fade: true,
+        infinite: true,
         pauseOnHover: false,
+        speed: 1000,
+        waitForAnimate: false,
+        draggable:false,
     };
     return (
         <div>
@@ -93,40 +93,52 @@ export function OurStudentSay() {
                 better insight about us, our honesty, transparency and our
                 devotion towards our students.
             </p>
-            <Slider {...settings}>
-                {users?.map((user) => (
-                    <div key={user.id}>
-                        <section className="flex justify-center gap-5">
-                            <section className="space-y-2 grow-0 w-[35%] flex flex-col items-center">
-                                <img
-                                    className="ring-3 ring-offset-2 ring-gray-300/30 mb-5 object-scle-down"
-                                    src={user.img}
-                                    alt={user.name}
-                                />
-                                <h4 className="text-xl font-semibold text-center">
-                                    {user.name}
-                                </h4>
-                                <h5 className="text-sm font-bold text-center">
-                                    {user.university}
-                                </h5>
+            <div className="slider-container">
+                <Slider {...settings}>
+                    {users?.map((user, i) => (
+                        <Fragment key={i}>
+                            <section className="flex justify-center gap-5">
+                                <section className="space-y-2 grow-0 w-[35%] flex flex-col items-center">
+                                    <img
+                                        className="ring-3 ring-offset-2 ring-gray-300/30 mb-5 object-scle-down"
+                                        src={user.img}
+                                        alt={user.name}
+                                    />
+                                    <h4 className="text-xl font-semibold text-center">
+                                        {user.name}
+                                    </h4>
+                                    <h5 className="text-sm font-bold text-center">
+                                        {user.university}
+                                    </h5>
+                                </section>
+                                <section className="py-5 grow w-[60%] flex flex-col">
+                                    <h4 className="text-lg font-semibold ">
+                                        {user.program}
+                                    </h4>
+                                    <Rating
+                                        defaultValue={user.stars}
+                                        readOnly
+                                    />
+                                    <article className="mt-5">
+                                        <FaQuoteLeft className="inline-flex mr-1 size-5 -mt-2" />
+                                        <span>
+                                            {user.message.slice(0, 120)}...
+                                        </span>
+                                        <FaQuoteRight className="inline-flex ml-1 size-5 -mt-2" />
+                                    </article>
+                                    <Button
+                                        variant="light"
+                                        color="#819A91"
+                                        className="self-center mt-5"
+                                    >
+                                        View More
+                                    </Button>
+                                </section>
                             </section>
-                            <section className="py-5 grow w-[60%] flex flex-col">
-                                <h4 className="text-lg font-semibold ">
-                                    {user.program}
-                                </h4>
-                                <Rating defaultValue={user.stars} readOnly />
-                                <article className="mt-5">
-                                    <FaQuoteLeft className="inline-flex mr-1 size-5 -mt-2" />
-                                    <span>{user.message.slice(0,120)}...</span>
-                                    <FaQuoteRight className="inline-flex ml-1 size-5 -mt-2" />
-                                </article>
-                                <Button variant="light" color="teal" className="self-center mt-5">View More</Button>
-                            </section>
-                        </section>
-                    </div>
-                ))}
-                <div></div>
-            </Slider>
+                        </Fragment>
+                    ))}
+                </Slider>
+            </div>
         </div>
     );
 }

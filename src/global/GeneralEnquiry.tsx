@@ -97,7 +97,7 @@ export function GeneralEnquiry() {
                         size="md"
                         color="#819A91"
                     >
-                        Button
+                        Send
                     </Button>
                 </form>
             </section>
