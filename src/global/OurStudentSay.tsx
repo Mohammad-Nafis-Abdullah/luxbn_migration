@@ -74,7 +74,7 @@ export function OurStudentSay() {
         autoplay: true,
         autoplaySpeed: 5000,
         centerPadding: "0px",
-        className: "bg-gray-300/30 p-5 rounded-lg mt-5",
+        className: "bg-gray-300/30 py-5 p-3 sm:p-5 rounded-lg mt-5",
         // dots: true,
         // fade: true,
         infinite: true,
@@ -97,7 +97,7 @@ export function OurStudentSay() {
                 <Slider {...settings}>
                     {users?.map((user, i) => (
                         <Fragment key={i}>
-                            <section className="flex justify-center gap-5">
+                            <section className="flex justify-center gap-5 mx-2">
                                 <section className="space-y-2 grow-0 w-[35%] flex flex-col items-center">
                                     <img
                                         className="ring-3 ring-offset-2 ring-gray-300/30 mb-5 object-scle-down"

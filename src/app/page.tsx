@@ -1,3 +1,4 @@
+import { AuthorizationAndCertificate } from "./Home/AuthorizationAndCertificate";
 import { Banner } from "./Home/Banner";
 import { ChooseCountry } from "./Home/ChooseCountry";
 import { EnquiryAndStudentSay } from "./Home/EnquiryAndStudentSay";
@@ -14,6 +15,7 @@ export default function Home() {
       <WhyDifferent/>
       <VisaAndWork/>
       <EnquiryAndStudentSay/>
+      <AuthorizationAndCertificate/>
     </div>
   );
 }
