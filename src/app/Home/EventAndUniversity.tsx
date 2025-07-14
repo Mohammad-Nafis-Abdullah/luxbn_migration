@@ -47,7 +47,7 @@ export function EventAndUniversity() {
         autoplay: true,
         autoplaySpeed: 5000,
         centerPadding: "0px",
-        className: "bg-gray-300/30 p-3 sm:p-5 rounded-lg",
+        className: "bg-gray-300/30 p-3 sm:p-5 rounded-xs",
         // dots: true,
         // fade: true,
         infinite: true,
