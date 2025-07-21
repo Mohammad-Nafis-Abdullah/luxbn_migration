@@ -58,20 +58,19 @@ const data: {
 export function ChooseCountry() {
     const { width } = useViewportSize();
     return (
-        <div className="p-5 max-w-6xl mx-auto">
-            <section className="flex flex-col lg:flex-row gap-10 py-12">
+        <div
+            className="p-5 pt-24 max-w-6xl mx-auto"
+            id="study-abroad"
+        >
+            <section className="flex flex-col lg:flex-row gap-10 pb-12">
                 <h3 className="text-5xl text-center sm:whitespace-nowrap font-bold">
                     Choose Your Country
                 </h3>
-                {
-                    width >= 1024?
-                    <Divider
-                        color="black"
-                        size="md"
-                        orientation="vertical"
-                    />:
-                    <div className="bg-gray-800 h-1 rounded-full w-48 mx-auto"/>
-                }
+                {width >= 1024 ? (
+                    <Divider color="black" size="md" orientation="vertical" />
+                ) : (
+                    <div className="bg-gray-800 h-1 rounded-full w-48 mx-auto" />
+                )}
                 <article>
                     NHP processes Student Visa, Student Spouse Visa and Parents
                     Visitors Visa for UK, USA, Canada, Australia and Malaysia.

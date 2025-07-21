@@ -10,7 +10,7 @@ import { WhyDifferent } from "./Home/WhyDifferent";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="scroll-smooth">
       <Banner/>
       <ChooseCountry/>
       <WhyChooseUs/>

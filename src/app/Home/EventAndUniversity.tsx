@@ -76,7 +76,7 @@ export function EventAndUniversity() {
     };
 
     return (
-        <div className="bg-[#f4f4f4]">
+        <div className="bg-[#f4f4f4]" id="university">
             <div className="p-5 pt-24 pb-10 sm:pb-20 max-w-6xl mx-auto space-y-10">
                 <section className="flex flex-col lg:flex-row gap-10 ">
                     <h3 className="text-5xl text-center sm:whitespace-nowrap font-bold">

@@ -1,7 +1,6 @@
-"use client"
+"use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { Fragment } from "react";
 import Slider, { Settings } from "react-slick";
 
 const certificates: {
@@ -62,7 +61,7 @@ export function CertificateSlide() {
         <div className="slider-container">
             <Slider {...settings}>
                 {certificates?.map((data, i) => (
-                    <Fragment key={i}>
+                    <div key={i}>
                         <section className="">
                             <img
                                 className="ring-3 ring-offset-2 ring-gray-300/30 w-full border-4 border-white"
@@ -70,7 +69,7 @@ export function CertificateSlide() {
                                 alt={data.title}
                             />
                         </section>
-                    </Fragment>
+                    </div>
                 ))}
             </Slider>
         </div>

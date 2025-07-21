@@ -2,74 +2,107 @@
 
 import { Affix, Burger, Drawer, Transition } from "@mantine/core";
 import { useDisclosure, useWindowScroll } from "@mantine/hooks";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FaAngleUp } from "react-icons/fa6";
 import { SiNextdotjs } from "react-icons/si";
 
 // @flow
 export function Header() {
-    const path = usePathname();
+    const router = useRouter();
     const [opened, { close, toggle }] = useDisclosure(false);
     const [scroll, scrollTo] = useWindowScroll();
 
     return (
         <header className="bg-white sticky top-0 left-0 right-0 text-black shadow-xs z-50">
             <div className="max-w-6xl px-3 py-5 mx-auto flex justify-between items-center">
-                <section className="inline-flex items-center gap-3">
+                <span
+                    onClick={() => {
+                        router.push("");
+                        scrollTo({ y: 0 });
+                    }}
+                    className="inline-flex items-center gap-3 cursor-pointer"
+                >
                     <SiNextdotjs className="size-12" />
                     <h3 className="text-xl font-bold">LUXBN MIGRATION</h3>
-                </section>
+                </span>
 
                 {/* pc navbar */}
-                <nav className="hidden gap-5 lg:inline-flex">
-                    <Link
-                        href="/"
-                        className={`font-bold ${path === "/" && "active_link"}`}
+                <nav className="hidden gap-5 lg:inline-flex *:cursor-pointer">
+                    <span
+                        onClick={() => {
+                            router.push("");
+                            close();
+                            scrollTo({ y: 0 });
+                        }}
+                        className={`font-bold`}
                     >
                         HOME
-                    </Link>
-                    <Link
-                        href="/study-abroad"
-                        className={`font-bold ${
-                            path === "/study-abroad" && "active_link"
-                        }`}
+                    </span>
+                    <span
+                        onClick={(e) => {
+                            e.preventDefault();
+                            router.push("#study-abroad");
+                            close();
+                            const section =
+                                document.getElementById("study-abroad");
+                            section?.scrollIntoView({
+                                behavior: "smooth",
+                            });
+                        }}
+                        className={`font-bold scroll-smooth `}
                     >
                         STUDY ABROAD
-                    </Link>
-                    <Link
-                        href="/scholarship"
-                        className={`font-bold ${
-                            path === "/scholarship" && "active_link"
-                        }`}
+                    </span>
+                    <span
+                        onClick={(e) => {
+                            e.preventDefault();
+                            close();
+                            const section =
+                                document.getElementById("scholarship");
+                            section?.scrollIntoView({
+                                behavior: "smooth",
+                            });
+                        }}
+                        className={`font-bold `}
                     >
                         SCHOLARSHIP
-                    </Link>
-                    <Link
-                        href="/university"
-                        className={`font-bold ${
-                            path === "/university" && "active_link"
-                        }`}
+                    </span>
+                    <span
+                        onClick={(e) => {
+                            e.preventDefault();
+                            router.push("#university");
+                            close();
+                            const section =
+                                document.getElementById("university");
+                            section?.scrollIntoView({
+                                behavior: "smooth",
+                            });
+                        }}
+                        className={`font-bold `}
                     >
                         UNIVERSITY
-                    </Link>
-                    <Link
-                        href="/contact"
-                        className={`font-bold ${
-                            path === "/contact" && "active_link"
-                        }`}
+                    </span>
+                    <span
+                        onClick={(e) => {
+                            e.preventDefault();
+                            close();
+                            const section = document.getElementById("contact");
+                            section?.scrollIntoView({
+                                behavior: "smooth",
+                            });
+                        }}
+                        className={`font-bold `}
                     >
                         CONTACT
-                    </Link>
+                    </span>
                 </nav>
 
                 {/* mobile navbar */}
-                <nav>
+                <nav className="lg:hidden">
                     <Burger
                         opened={opened}
                         onClick={toggle}
                         aria-label="Toggle navigation"
-                        className="lg:hidden"
                     />
                     <Drawer
                         radius="sm"
@@ -79,7 +112,76 @@ export function Header() {
                         size={"xs"}
                         title=""
                     >
-                        {/* Drawer content */}
+                        <nav className="*:cursor-pointer flex flex-col px-3 gap-5">
+                            <span
+                                onClick={() => {
+                                    router.push("");
+                                    close();
+                                    scrollTo({ y: 0 });
+                                }}
+                                className={`font-bold`}
+                            >
+                                HOME
+                            </span>
+                            <span
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    router.push("#study-abroad");
+                                    close();
+                                    const section =
+                                        document.getElementById("study-abroad");
+                                    section?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                }}
+                                className={`font-bold scroll-smooth `}
+                            >
+                                STUDY ABROAD
+                            </span>
+                            <span
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    close();
+                                    const section =
+                                        document.getElementById("scholarship");
+                                    section?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                }}
+                                className={`font-bold `}
+                            >
+                                SCHOLARSHIP
+                            </span>
+                            <span
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    router.push("#university");
+                                    close();
+                                    const section =
+                                        document.getElementById("university");
+                                    section?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                }}
+                                className={`font-bold `}
+                            >
+                                UNIVERSITY
+                            </span>
+                            <span
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    close();
+                                    const section =
+                                        document.getElementById("contact");
+                                    section?.scrollIntoView({
+                                        behavior: "smooth",
+                                    });
+                                }}
+                                className={`font-bold `}
+                            >
+                                CONTACT
+                            </span>
+                        </nav>
                     </Drawer>
                 </nav>
             </div>

@@ -2,7 +2,8 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;;
+  --foreground: #171717;
+  ;
 }
 
 @theme inline {
@@ -13,9 +14,9 @@
   --font-roboto: var(--font-roboto);
 }
 
-@theme{
-  --color-primary : #819A91;
-  --color-secondary : #A7C1A8;
+@theme {
+  --color-primary: #819A91;
+  --color-secondary: #A7C1A8;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -29,13 +30,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
-@layer components{
+@layer components {
   .active_link {
     @apply text-primary relative;
   }
-  .active_link::after{
+
+  .active_link::after {
     content: "";
     @apply absolute border-b-4 w-[70%] mx-auto bottom-0 right-[15%] rounded-4xl;
   }

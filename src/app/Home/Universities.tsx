@@ -138,9 +138,9 @@ export function Universities() {
             <Slider {...settings}>
                 {universities?.map((v) => (
                     <div key={v.id} className="p-1">
-                      <section className="bg-gray-300/30 p-5 sm:p-15">
-                        <img src={v.img} alt="" className="w-full"/>
-                      </section>
+                        <section className="bg-gray-300/30 p-5 sm:p-15">
+                            <img src={v.img} alt="" className="w-full" />
+                        </section>
                     </div>
                 ))}
             </Slider>
