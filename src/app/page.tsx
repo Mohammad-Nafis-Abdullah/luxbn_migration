@@ -13,13 +13,13 @@ export default function Home() {
     <div className="scroll-smooth">
       <Banner/>
       <ChooseCountry/>
-      <WhyChooseUs/>
       <WhyDifferent/>
       <VisaAndWork/>
       <EnquiryAndStudentSay/>
       <AuthorizationAndCertificate/>
       <EventAndUniversity/>
       <Universities/>
+      <WhyChooseUs/>
     </div>
   );
 }

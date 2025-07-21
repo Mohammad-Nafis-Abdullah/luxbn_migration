@@ -7,6 +7,7 @@ import { Top } from "@/global/Top";
 import { MantineProvider } from "@mantine/core";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Footer } from "@/global/Footer";
 
 const roboto = Roboto({
     variable: "--font-roboto",
@@ -30,6 +31,7 @@ export default function RootLayout({
                     <Top />
                     <Header />
                     {children}
+                    <Footer/>
                 </MantineProvider>
             </body>
         </html>
