@@ -1,7 +1,12 @@
 "use client";
 
 import { Affix, Burger, Drawer, Transition } from "@mantine/core";
-import { useDisclosure, useWindowScroll } from "@mantine/hooks";
+import {
+    useDisclosure,
+    useWindowScroll,
+    UseWindowScrollTo,
+} from "@mantine/hooks";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useRouter } from "next/navigation";
 import { FaAngleUp } from "react-icons/fa6";
 import { SiNextdotjs } from "react-icons/si";
@@ -17,7 +22,7 @@ export function Header() {
             <div className="max-w-6xl px-3 py-5 mx-auto flex justify-between items-center">
                 <span
                     onClick={() => {
-                        router.push("");
+                        router.push("/");
                         scrollTo({ y: 0 });
                     }}
                     className="inline-flex items-center gap-3 cursor-pointer"
@@ -28,73 +33,11 @@ export function Header() {
 
                 {/* pc navbar */}
                 <nav className="hidden gap-5 lg:inline-flex *:cursor-pointer">
-                    <span
-                        onClick={() => {
-                            router.push("");
-                            close();
-                            scrollTo({ y: 0 });
-                        }}
-                        className={`font-bold`}
-                    >
-                        HOME
-                    </span>
-                    <span
-                        onClick={(e) => {
-                            e.preventDefault();
-                            router.push("#study-abroad");
-                            close();
-                            const section =
-                                document.getElementById("study-abroad");
-                            section?.scrollIntoView({
-                                behavior: "smooth",
-                            });
-                        }}
-                        className={`font-bold scroll-smooth `}
-                    >
-                        STUDY ABROAD
-                    </span>
-                    <span
-                        onClick={(e) => {
-                            e.preventDefault();
-                            close();
-                            const section =
-                                document.getElementById("scholarship");
-                            section?.scrollIntoView({
-                                behavior: "smooth",
-                            });
-                        }}
-                        className={`font-bold `}
-                    >
-                        SCHOLARSHIP
-                    </span>
-                    <span
-                        onClick={(e) => {
-                            e.preventDefault();
-                            router.push("#university");
-                            close();
-                            const section =
-                                document.getElementById("university");
-                            section?.scrollIntoView({
-                                behavior: "smooth",
-                            });
-                        }}
-                        className={`font-bold `}
-                    >
-                        UNIVERSITY
-                    </span>
-                    <span
-                        onClick={(e) => {
-                            e.preventDefault();
-                            close();
-                            const section = document.getElementById("contact");
-                            section?.scrollIntoView({
-                                behavior: "smooth",
-                            });
-                        }}
-                        className={`font-bold `}
-                    >
-                        CONTACT
-                    </span>
+                    <NavOptions
+                        router={router}
+                        close={close}
+                        scrollTo={scrollTo}
+                    />
                 </nav>
 
                 {/* mobile navbar */}
@@ -113,74 +56,11 @@ export function Header() {
                         title=""
                     >
                         <nav className="*:cursor-pointer flex flex-col px-3 gap-5">
-                            <span
-                                onClick={() => {
-                                    router.push("");
-                                    close();
-                                    scrollTo({ y: 0 });
-                                }}
-                                className={`font-bold`}
-                            >
-                                HOME
-                            </span>
-                            <span
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    router.push("#study-abroad");
-                                    close();
-                                    const section =
-                                        document.getElementById("study-abroad");
-                                    section?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                }}
-                                className={`font-bold scroll-smooth `}
-                            >
-                                STUDY ABROAD
-                            </span>
-                            <span
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    close();
-                                    const section =
-                                        document.getElementById("scholarship");
-                                    section?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                }}
-                                className={`font-bold `}
-                            >
-                                SCHOLARSHIP
-                            </span>
-                            <span
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    router.push("#university");
-                                    close();
-                                    const section =
-                                        document.getElementById("university");
-                                    section?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                }}
-                                className={`font-bold `}
-                            >
-                                UNIVERSITY
-                            </span>
-                            <span
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    close();
-                                    const section =
-                                        document.getElementById("contact");
-                                    section?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                                }}
-                                className={`font-bold `}
-                            >
-                                CONTACT
-                            </span>
+                            <NavOptions
+                                router={router}
+                                close={close}
+                                scrollTo={scrollTo}
+                            />
                         </nav>
                     </Drawer>
                 </nav>
@@ -197,5 +77,85 @@ export function Header() {
                 </Transition>
             </Affix>
         </header>
+    );
+}
+
+function NavOptions({
+    router,
+    close,
+    scrollTo,
+}: {
+    router: AppRouterInstance;
+    close: () => void;
+    scrollTo: UseWindowScrollTo;
+}) {
+    return (
+        <>
+            <span
+                onClick={() => {
+                    router.push("/");
+                    close();
+                    scrollTo({ y: 0 });
+                }}
+                className={`font-bold`}
+            >
+                HOME
+            </span>
+            <span
+                onClick={(e) => {
+                    e.preventDefault();
+                    router.push("/#study-abroad");
+                    close();
+                    const section = document.getElementById("study-abroad");
+                    section?.scrollIntoView({
+                        behavior: "smooth",
+                    });
+                }}
+                className={`font-bold scroll-smooth `}
+            >
+                STUDY ABROAD
+            </span>
+            <span
+                onClick={(e) => {
+                    e.preventDefault();
+                    router.push("/scholarship");
+                    close();
+                    const section = document.getElementById("scholarship");
+                    section?.scrollIntoView({
+                        behavior: "smooth",
+                    });
+                }}
+                className={`font-bold `}
+            >
+                SCHOLARSHIP
+            </span>
+            <span
+                onClick={(e) => {
+                    e.preventDefault();
+                    router.push("/#university");
+                    close();
+                    const section = document.getElementById("university");
+                    section?.scrollIntoView({
+                        behavior: "smooth",
+                    });
+                }}
+                className={`font-bold `}
+            >
+                UNIVERSITY
+            </span>
+            <span
+                onClick={(e) => {
+                    e.preventDefault();
+                    close();
+                    const section = document.getElementById("contact");
+                    section?.scrollIntoView({
+                        behavior: "smooth",
+                    });
+                }}
+                className={`font-bold `}
+            >
+                CONTACT
+            </span>
+        </>
     );
 }
