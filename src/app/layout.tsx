@@ -7,6 +7,7 @@ import { Top } from "@/global/Top";
 import { MantineProvider } from "@mantine/core";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "leaflet/dist/leaflet.css";
 import { Footer } from "@/global/Footer";
 
 const roboto = Roboto({

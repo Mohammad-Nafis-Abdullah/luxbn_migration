@@ -9,12 +9,14 @@ import {
     FaMapMarkerAlt,
 } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa6";
+import { MapLocation } from "./MapLocation";
 
 export default function ContactUs() {
     return (
         <div className="min-h-screen bg-gray-50 text-gray-800 py-10">
+            <MapLocation />
             {/* Contact Info Section */}
-            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 mt-20">
                 {/* Card: Call Us */}
                 <div className="bg-white shadow-md rounded-xl p-8 flex flex-col items-center space-y-3 hover:shadow-lg transition">
                     <FaPhone className="text-4xl text-[#001F4D]" />
