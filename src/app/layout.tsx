@@ -31,7 +31,7 @@ export default function RootLayout({
                     <Top />
                     <Header />
                     {children}
-                    <Footer/>
+                    <Footer />
                 </MantineProvider>
             </body>
         </html>
