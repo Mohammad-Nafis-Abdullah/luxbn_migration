@@ -120,37 +120,26 @@ function NavOptions({
                     e.preventDefault();
                     router.push("/scholarship");
                     close();
-                    const section = document.getElementById("scholarship");
-                    section?.scrollIntoView({
-                        behavior: "smooth",
-                    });
                 }}
                 className={`font-bold `}
             >
                 SCHOLARSHIP
             </span>
             <span
-                onClick={(e) => {
-                    e.preventDefault();
-                    router.push("/#university");
+                onClick={() => {
+                    router.push("/universities");
                     close();
-                    const section = document.getElementById("university");
-                    section?.scrollIntoView({
-                        behavior: "smooth",
-                    });
+                    // scrollTo({ y: 0 });
                 }}
-                className={`font-bold `}
+                className={`font-bold`}
             >
                 UNIVERSITY
             </span>
             <span
-                onClick={(e) => {
-                    e.preventDefault();
+                onClick={() => {
+                    router.push("/contact-us");
                     close();
-                    const section = document.getElementById("contact");
-                    section?.scrollIntoView({
-                        behavior: "smooth",
-                    });
+                    // scrollTo({ y: 0 });
                 }}
                 className={`font-bold `}
             >
