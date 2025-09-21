@@ -1,134 +1,99 @@
 "use client";
 
-import { OurAbilityCard, OurAbilityCard_props } from "@/global/OurAbilityCard";
-import { OurFeatureCard, OurFeatureCard_props } from "@/global/OurFeatureCard";
-import { Divider } from "@mantine/core";
-import { useViewportSize } from "@mantine/hooks";
-import { FaMapLocationDot, FaUserCheck } from "react-icons/fa6";
-import { GrCertificate } from "react-icons/gr";
-import { HiMiniCubeTransparent } from "react-icons/hi2";
-import {
-    MdFamilyRestroom,
-    MdOutlineDisplaySettings,
-    MdOutlineMapsHomeWork,
-    MdOutlinePermContactCalendar,
-} from "react-icons/md";
-import { PiLightbulbFilamentLight } from "react-icons/pi";
-import { TbUserExclamation } from "react-icons/tb";
+import { useEffect, useState } from "react";
+import { FaGlobe, FaUserGraduate, FaHandshake, FaLightbulb } from "react-icons/fa";
 
-// demo data
-const data: OurFeatureCard_props[] = [
-    {
-        icon: <TbUserExclamation className="size-16" />,
-        title: "experience",
-        message:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt placeat inventore in delectus praesentium voluptatem neque rerum nostrum laudantium nisi ducimus nihil ex aliquam, dicta iure deleniti quam assumenda numquam? Reiciendis, qui recusandae eos commodi asperiores neque officiis, ullam est distinctio earum harum odit excepturi fuga autem rerum, doloribus consequuntur?",
-    },
-    {
-        icon: <HiMiniCubeTransparent className="size-16" />,
-        title: "transparency",
-        message:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt placeat inventore in delectus praesentium voluptatem neque rerum nostrum laudantium nisi ducimus nihil ex aliquam, dicta iure deleniti quam assumenda numquam? Reiciendis, qui recusandae eos commodi asperiores neque officiis, ullam est distinctio earum harum odit excepturi fuga autem rerum, doloribus consequuntur?",
-    },
-    {
-        icon: <MdFamilyRestroom className="size-16" />,
-        title: "pastoral care",
-        message:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt placeat inventore in delectus praesentium voluptatem neque rerum nostrum laudantium nisi ducimus nihil ex aliquam, dicta iure deleniti quam assumenda numquam? Reiciendis, qui recusandae eos commodi asperiores neque officiis, ullam est distinctio earum harum odit excepturi fuga autem rerum, doloribus consequuntur?",
-    },
-    {
-        icon: <GrCertificate className="size-16" />,
-        title: "authorized agent",
-        message:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt placeat inventore in delectus praesentium voluptatem neque rerum nostrum laudantium nisi ducimus nihil ex aliquam, dicta iure deleniti quam assumenda numquam? Reiciendis, qui recusandae eos commodi asperiores neque officiis, ullam est distinctio earum harum odit excepturi fuga autem rerum, doloribus consequuntur?",
-    },
-    {
-        icon: <PiLightbulbFilamentLight className="size-16" />,
-        title: "intelligency and skill",
-        message:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt placeat inventore in delectus praesentium voluptatem neque rerum nostrum laudantium nisi ducimus nihil ex aliquam, dicta iure deleniti quam assumenda numquam? Reiciendis, qui recusandae eos commodi asperiores neque officiis, ullam est distinctio earum harum odit excepturi fuga autem rerum, doloribus consequuntur?",
-    },
-    {
-        icon: <MdOutlineDisplaySettings className="size-16" />,
-        title: "long term relationship",
-        message:
-            "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt placeat inventore in delectus praesentium voluptatem neque rerum nostrum laudantium nisi ducimus nihil ex aliquam, dicta iure deleniti quam assumenda numquam? Reiciendis, qui recusandae eos commodi asperiores neque officiis, ullam est distinctio earum harum odit excepturi fuga autem rerum, doloribus consequuntur?",
-    },
+const highlights = [
+  {
+    icon: <FaUserGraduate className="text-4xl text-blue-600" />,
+    title: "Expert Guidance",
+    desc: "Our experienced counselors guide you step by step to achieve your study abroad goals.",
+  },
+  {
+    icon: <FaGlobe className="text-4xl text-green-600" />,
+    title: "Global Reach",
+    desc: "Partnerships with top universities across the UK, USA, Canada, Australia, and Europe.",
+  },
+  {
+    icon: <FaHandshake className="text-4xl text-purple-600" />,
+    title: "Trusted Support",
+    desc: "Thousands of students trust us every year for transparent and reliable services.",
+  },
+  {
+    icon: <FaLightbulb className="text-4xl text-yellow-500" />,
+    title: "Smart Solutions",
+    desc: "Scholarship guidance, visa assistance, and career counseling—all in one place.",
+  },
 ];
 
-const abilities: OurAbilityCard_props[] = [
-    {
-        icon: (
-            <MdOutlinePermContactCalendar className="size-7 md:size-10 shrink-0" />
-        ),
-        quantity: 16,
-        text: "Years of Experience",
-        showPlus: true,
-    },
-    {
-        icon: <FaMapLocationDot className="size-7 md:size-10 shrink-0" />,
-        quantity: 5,
-        text: "Countries",
-        showPlus: false,
-    },
-    {
-        icon: <MdOutlineMapsHomeWork className="size-7 md:size-10 shrink-0" />,
-        quantity: 100,
-        text: "Universities",
-        showPlus: true,
-    },
-    {
-        icon: <FaUserCheck className="size-7 md:size-10 shrink-0" />,
-        quantity: 2000,
-        text: "Success Story",
-        showPlus: true,
-    },
+const stats = [
+  { label: "Years of Experience", value: 16, suffix: "+" },
+  { label: "Countries", value: 5, suffix: "" },
+  { label: "Universities", value: 50, suffix: "+" },
+  { label: "Success Stories", value: 100, suffix: "+" },
 ];
 
 export function WhyChooseUs() {
-    const { width } = useViewportSize();
-    return (
-        <div className="bg-[#f4f4f4]">
-            <div className="p-5 pt-24 pb-10 sm:pb-20 max-w-6xl mx-auto space-y-20">
-                <section className="flex flex-col lg:flex-row gap-10 ">
-                    <h3 className="text-5xl text-center sm:whitespace-nowrap font-bold">
-                        Why Choose Us?
-                    </h3>
-                    {width >= 1024 ? (
-                        <Divider
-                            color="black"
-                            size="md"
-                            orientation="vertical"
-                        />
-                    ) : (
-                        <div className="bg-gray-800 h-1 rounded-full w-48 mx-auto" />
-                    )}
-                    <article>
-                        {`In confusion, many can't decide where to get proper knowing for his or her desired aim and sometimes it can be an unwise decision.`}
-                    </article>
-                </section>
-                <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {data.map((v, i) => (
-                        <OurFeatureCard
-                            key={i}
-                            icon={v.icon}
-                            title={v.title}
-                            message={v.message}
-                        />
-                    ))}
-                </section>
-                <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-                    {abilities.map((v, i) => (
-                        <OurAbilityCard
-                            key={i}
-                            icon={v.icon}
-                            text={v.text}
-                            quantity={v.quantity}
-                            showPlus={v.showPlus}
-                        />
-                    ))}
-                </section>
-            </div>
-        </div>
+  const [counters, setCounters] = useState(stats.map(() => 0));
+
+  useEffect(() => {
+    const timers = stats.map((stat, i) =>
+      setInterval(() => {
+        setCounters((prev) => {
+          const newCounters = [...prev];
+          if (newCounters[i] < stat.value) newCounters[i] += 2;
+          return newCounters;
+        });
+      }, 30)
     );
+
+    return () => timers.forEach((t) => clearInterval(t));
+  }, []);
+
+  return (
+    <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            Why <span className="text-blue-600">Choose Us?</span>
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            We help students unlock global opportunities with expert guidance,
+            scholarship support, and trusted partnerships.
+          </p>
+        </div>
+
+        {/* Highlights */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          {highlights.map((item, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-xl shadow-lg p-6 text-center border hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-2"
+            >
+              <div className="flex justify-center mb-4">{item.icon}</div>
+              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="p-6 bg-blue-50 rounded-lg shadow-md hover:bg-blue-100 transition"
+            >
+              <h4 className="text-3xl font-bold text-blue-600">
+                {counters[i]}
+                {stat.suffix}
+              </h4>
+              <p className="text-gray-700 mt-2">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

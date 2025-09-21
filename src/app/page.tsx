@@ -2,7 +2,7 @@ import { AuthorizationAndCertificate } from "./Home/AuthorizationAndCertificate"
 import { Banner } from "./Home/Banner";
 import { ChooseCountry } from "./Home/ChooseCountry";
 import { EnquiryAndStudentSay } from "./Home/EnquiryAndStudentSay";
-import { EventAndUniversity } from "./Home/EventAndUniversity";
+// import { EventAndUniversity } from "./Home/EventAndUniversity";
 import { Universities } from "./Home/Universities";
 import { VisaAndWork } from "./Home/VisaAndWork";
 import { WhyChooseUs } from "./Home/WhyChooseUs";
@@ -17,7 +17,7 @@ export default function Home() {
       <VisaAndWork/>
       <EnquiryAndStudentSay/>
       <AuthorizationAndCertificate/>
-      <EventAndUniversity/>
+      {/* <EventAndUniversity/> */}
       <Universities/>
       <WhyChooseUs/>
     </div>

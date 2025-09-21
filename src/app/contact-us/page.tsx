@@ -34,7 +34,7 @@ export default function ContactUs() {
                     <h3 className="text-xl font-bold">Office Location</h3>
                     <p className="text-center text-sm leading-relaxed">
                         G13A, Manchester, M22 5TG <br />
-                        Manchester Business Park, London, <br />
+                        Manchester Business Park, Manchester, <br />
                         UK
                     </p>
                 </div>

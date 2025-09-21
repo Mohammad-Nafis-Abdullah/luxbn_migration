@@ -5,16 +5,20 @@ import Slider, { Settings } from "react-slick";
 
 const images: { link: string; text: string }[] = [
     {
-        link: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eSUyMHN0dWRlbnR8ZW58MHx8MHx8fDA%3D",
+        link: "/banner1.png",
         text: "Experience you need, results you want",
     },
     {
-        link: "https://images.pexels.com/photos/1326947/pexels-photo-1326947.jpeg?cs=srgb&dl=pexels-george-dolgikh-551816-1326947.jpg&fm=jpg",
+        link: "/banner2.png",
         text: "UK. USA. CANADA. AUSTRALIA. MALAYSIA",
     },
     {
-        link: "https://cdn.wallpapersafari.com/89/9/kQJnj8.jpg",
+        link: "/banner3.png",
         text: "canadian university admission day",
+    },
+    {
+        link: "/banner4.png",
+        text: "Australia university First day",
     },
 ];
 
@@ -40,7 +44,7 @@ export function Banner() {
             {images.map((img, i) => (
                 <div key={i} className="relative">
                     <img
-                        className="h-[calc(100vh-137px)] object-cover w-full contrast-40"
+                        className="h-[calc(100vh-137px)] object-cover w-full contrast-60"
                         src={img.link}
                         alt={img.text}
                     />
