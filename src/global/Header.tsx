@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Affix, Burger, Drawer, Transition } from "@mantine/core";
@@ -23,7 +24,7 @@ export function Header() {
                 <span
                     onClick={() => {
                         router.push("/");
-                        scrollTo({ y: 0 });
+                        // scrollTo({ y: 0 });
                     }}
                     className="inline-flex items-center gap-3 cursor-pointer"
                 >
@@ -95,7 +96,7 @@ function NavOptions({
                 onClick={() => {
                     router.push("/");
                     close();
-                    scrollTo({ y: 0 });
+                    // scrollTo({ y: 0 });
                 }}
                 className={`font-bold`}
             >

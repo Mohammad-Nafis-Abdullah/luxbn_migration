@@ -9,10 +9,22 @@ import {
     FaMapMarkerAlt,
 } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa6";
+import dynamic from "next/dynamic";
+import { QueryForm } from "./QueryForm";
+
+// Dynamically import the map component with SSR disabled
+const MapLocation = dynamic(
+    () => import("./MapLocation").then((mod) => mod.MapLocation),
+    {
+        ssr: false,
+    }
+);
 
 export default function ContactUs() {
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-800 py-10">
+        <div className="min-h-screen bg-gray-50 text-gray-800 pb-10">
+            {/* map location section */}
+            <MapLocation />
             {/* Contact Info Section */}
             <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 mt-20">
                 {/* Card: Call Us */}
@@ -74,36 +86,7 @@ export default function ContactUs() {
                 </div>
 
                 {/* Form */}
-                <div className="bg-white shadow-md rounded-xl p-8 space-y-4 text-left">
-                    <h3 className="text-xl font-bold text-[#001F4D]">
-                        Make an{" "}
-                        <span className="font-normal text-gray-400">
-                            Enquiry
-                        </span>
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                        Use this form to make a general enquiry.
-                    </p>
-                    <textarea
-                        placeholder="Message"
-                        className="w-full border p-3 rounded-md h-32 focus:outline-none focus:border-[#001F4D]"
-                    />
-                    <div className="flex flex-col md:flex-row gap-4">
-                        <input
-                            type="text"
-                            placeholder="Name *"
-                            className="flex-1 border p-3 rounded-md focus:outline-none focus:border-[#001F4D]"
-                        />
-                        <input
-                            type="email"
-                            placeholder="Email *"
-                            className="flex-1 border p-3 rounded-md focus:outline-none focus:border-[#001F4D]"
-                        />
-                    </div>
-                    <button className="bg-[#001F4D] text-white px-6 py-3 rounded-md hover:bg-[#002a6e]">
-                        SUBMIT
-                    </button>
-                </div>
+                <QueryForm />
             </div>
         </div>
     );
