@@ -1,7 +1,7 @@
-import { AuthorizationAndCertificate } from "./Home/AuthorizationAndCertificate";
+// import { AuthorizationAndCertificate } from "./Home/AuthorizationAndCertificate";
 import { Banner } from "./Home/Banner";
 import { ChooseCountry } from "./Home/ChooseCountry";
-import { EnquiryAndStudentSay } from "./Home/EnquiryAndStudentSay";
+// import { EnquiryAndStudentSay } from "./Home/EnquiryAndStudentSay";
 // import { EventAndUniversity } from "./Home/EventAndUniversity";
 import { Universities } from "./Home/Universities";
 import { VisaAndWork } from "./Home/VisaAndWork";
