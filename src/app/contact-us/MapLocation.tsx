@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 });
 
 export function MapLocation() {
-    const position: LatLngExpression = [53.379833, -2.264053];
+    const position: LatLngExpression = [53.36730509358647, -2.2649853679402283];
 
     return (
         <div className="w-full h-[400px] rounded-lg overflow-hidden relative z-10">

@@ -60,7 +60,7 @@ export function Footer() {
 
         {/* Bottom line */}
         <div className="mt-6 text-center text-xs text-gray-400">
-          © {new Date().getFullYear()} LuxBN Ltd. All rights reserved.
+          © {new Date().getFullYear()} Luxbn Ltd. All rights reserved.
         </div>
       </Container>
     </footer>

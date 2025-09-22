@@ -15,8 +15,8 @@ export default function Home() {
       <ChooseCountry/>
       <WhyDifferent/>
       <VisaAndWork/>
-      <EnquiryAndStudentSay/>
-      <AuthorizationAndCertificate/>
+      {/* <EnquiryAndStudentSay/> */}
+      {/* <AuthorizationAndCertificate/> */}
       {/* <EventAndUniversity/> */}
       <Universities/>
       <WhyChooseUs/>
