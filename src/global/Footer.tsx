@@ -13,7 +13,7 @@ export function Footer() {
             <FaPhoneAlt className="text-2xl mt-1 text-gray-300" />
             <div>
               <Text className="font-semibold text-white">Call Us</Text>
-              <Text className="text-gray-300">+447342817542</Text>
+              <Text className="text-gray-300">+44 7352 991215</Text>
             </div>
           </div>
 
@@ -36,7 +36,7 @@ export function Footer() {
               <Text className="text-gray-300">
                 G13A, Manchester, M22 5TG
                 <br />
-                Manchester Business Park, London
+                Manchester Business Park, Manchester
               </Text>
             </div>
           </div>

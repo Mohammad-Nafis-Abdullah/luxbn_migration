@@ -70,7 +70,7 @@ export function Top() {
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 font-medium text-xs sm:text-sm md:text-base">
           <p className="inline-flex items-center justify-center sm:justify-start gap-2 hover:text-yellow-200 transition-all duration-300 cursor-pointer">
             <FaPhoneAlt className="animate-pulse text-yellow-300" /> 
-            <span className="hover:underline">+44 7342817542</span>
+            <span className="hover:underline">+44 7352 991215</span>
           </p>
 
           {/* Divider only visible on md+ */}
@@ -82,7 +82,7 @@ export function Top() {
           />
 
           <p className="inline-flex items-center justify-center sm:justify-start gap-2 hover:text-yellow-200 transition-all duration-300 cursor-pointer">
-            <FaRegClock /> <span className="hover:underline">Open 24/7</span>
+            <FaRegClock /> <span className="hover:underline">Monday - Friday</span>
           </p>
         </div>
 
