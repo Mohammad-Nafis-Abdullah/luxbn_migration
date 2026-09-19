@@ -135,11 +135,20 @@ export function Universities() {
 
     return (
         <div className="py-20 mx-auto max-w-[1440px]">
+            <div className="mb-8 flex flex-col items-center px-5 text-center">
+                <span className="section-eyebrow">Partners</span>
+                <h3 className="section-title mt-2">Our Partner Universities</h3>
+                <div className="section-bar" />
+            </div>
             <Slider {...settings}>
                 {universities?.map((v) => (
                     <div key={v.id} className="p-1">
-                        <section className="bg-gray-300/30 p-5 sm:p-15">
-                            <img src={v.img} alt="" className="w-full" />
+                        <section className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm transition duration-300 hover:shadow-lg sm:p-10">
+                            <img
+                                src={v.img}
+                                alt=""
+                                className="w-full grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100"
+                            />
                         </section>
                     </div>
                 ))}

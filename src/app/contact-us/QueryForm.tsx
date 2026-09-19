@@ -5,7 +5,8 @@ import { FormEvent, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 
-const mailFormat = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com)$/;
+// any address of the form name@domain.tld; the browser's type="email" check covers the finer rules
+const mailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function QueryForm() {
     const [visible, { close, open }] = useDisclosure(false);
@@ -24,60 +25,60 @@ export function QueryForm() {
         setNameErr("");
         setEmailErr("");
         setMssgErr("");
-        open();
 
-        const isValid = mailFormat.test(email);
-        if (!name) {
-            setNameErr("Please enter your name");
-            close();
-        }
-        if (!isValid) {
-            setEmailErr("Please enter a valid mail address");
-            close();
-        }
-        if (!mssg) {
-            setMssgErr("Please enter your message to send");
-            close();
-        }
-        if (isValid || name || mssg) {
-            emailjs
-                .sendForm(
-                    "service_qghx23n",
-                    "template_apo63v8",
-                    e.target as string | HTMLFormElement,
-                    "Jl7-8rR2TOR_6XGxA"
-                )
-                .then(() => {
-                    Swal.fire({
-                        title: "Your message is sent successfully",
-                        icon: "success",
-                        timer: 2000,
-                        showConfirmButton: false,
-                        timerProgressBar: true,
-                    });
-                    setName("");
-                    setEmail("");
-                    setMssg("");
-                })
-                .finally(() => {
-                    close();
+        const isEmailValid = mailFormat.test(email);
+        const hasName = name.trim() !== "";
+        const hasMssg = mssg.trim() !== "";
+
+        if (!hasName) setNameErr("Please enter your name");
+        if (!isEmailValid) setEmailErr("Please enter a valid mail address");
+        if (!hasMssg) setMssgErr("Please enter your message to send");
+
+        // only send once every field passes
+        if (!hasName || !isEmailValid || !hasMssg) return;
+
+        open();
+        emailjs
+            .sendForm(
+                "service_qghx23n",
+                "template_apo63v8",
+                e.currentTarget,
+                "Jl7-8rR2TOR_6XGxA"
+            )
+            .then(() => {
+                Swal.fire({
+                    title: "Your message is sent successfully",
+                    icon: "success",
+                    timer: 2000,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
                 });
-            close();
-            return;
-        }
-        close();
+                setName("");
+                setEmail("");
+                setMssg("");
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: "Your message could not be sent",
+                    text: "Please try again in a moment.",
+                    icon: "error",
+                });
+            })
+            .finally(() => {
+                close();
+            });
     }
     return (
-        <div className="bg-white shadow-md rounded-xl p-8 space-y-4 text-left">
-            <h3 className="text-xl font-bold text-[#001F4D]">
-                Make an{" "}
-                <span className="font-normal text-gray-400">Enquiry</span>
+        <div className="bg-white shadow-lg rounded-2xl border-t-4 border-accent p-8 space-y-4 text-left">
+            <span className="section-eyebrow">Send a message</span>
+            <h3 className="section-title !text-2xl">
+                Make an <span className="text-primary">Enquiry</span>
             </h3>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted">
                 Use this form to make a general enquiry.
             </p>
 
-            <section className="relative p-5 mt-8 rounded-md">
+            <section className="relative mt-6 rounded-md">
                 <LoadingOverlay
                     visible={visible}
                     zIndex={1000}
@@ -129,7 +130,7 @@ export function QueryForm() {
                         type="submit"
                         variant="filled"
                         size="md"
-                        color="#819A91"
+                        color="#0e7c86"
                     >
                         Send
                     </Button>

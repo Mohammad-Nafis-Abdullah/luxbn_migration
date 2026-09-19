@@ -5,22 +5,22 @@ import { FaGlobe, FaUserGraduate, FaHandshake, FaLightbulb } from "react-icons/f
 
 const highlights = [
   {
-    icon: <FaUserGraduate className="text-4xl text-blue-600" />,
+    icon: <FaUserGraduate className="text-3xl" />,
     title: "Expert Guidance",
     desc: "Our experienced counselors guide you step by step to achieve your study abroad goals.",
   },
   {
-    icon: <FaGlobe className="text-4xl text-green-600" />,
+    icon: <FaGlobe className="text-3xl" />,
     title: "Global Reach",
     desc: "Partnerships with top universities across the UK, USA, Canada, Australia, and Europe.",
   },
   {
-    icon: <FaHandshake className="text-4xl text-purple-600" />,
+    icon: <FaHandshake className="text-3xl" />,
     title: "Trusted Support",
     desc: "Thousands of students trust us every year for transparent and reliable services.",
   },
   {
-    icon: <FaLightbulb className="text-4xl text-yellow-500" />,
+    icon: <FaLightbulb className="text-3xl" />,
     title: "Smart Solutions",
     desc: "Scholarship guidance, visa assistance, and career counseling—all in one place.",
   },
@@ -41,7 +41,8 @@ export function WhyChooseUs() {
       setInterval(() => {
         setCounters((prev) => {
           const newCounters = [...prev];
-          if (newCounters[i] < stat.value) newCounters[i] += 2;
+          // clamp so odd targets (e.g. 5 countries) don't overshoot to 6
+          newCounters[i] = Math.min(newCounters[i] + 2, stat.value);
           return newCounters;
         });
       }, 30)
@@ -51,14 +52,16 @@ export function WhyChooseUs() {
   }, []);
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-20">
+    <section className="bg-surface py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-            Why <span className="text-blue-600">Choose Us?</span>
+        <div className="mb-16 flex flex-col items-center text-center">
+          <span className="section-eyebrow">Why Luxbn</span>
+          <h2 className="section-title mt-2 !text-4xl md:!text-5xl">
+            Why <span className="text-primary">Choose Us?</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="section-bar" />
+          <p className="section-lead mt-5 max-w-2xl text-lg">
             We help students unlock global opportunities with expert guidance,
             scholarship support, and trusted partnerships.
           </p>
@@ -69,27 +72,28 @@ export function WhyChooseUs() {
           {highlights.map((item, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl shadow-lg p-6 text-center border hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-2"
+              className="group rounded-2xl border border-gray-100 bg-white p-8 text-center shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
-              <div className="flex justify-center mb-4">{item.icon}</div>
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-600">{item.desc}</p>
+              <div className="mx-auto mb-5 grid size-16 place-items-center rounded-2xl bg-secondary text-primary transition duration-300 group-hover:bg-primary group-hover:text-white">
+                {item.icon}
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-navy">{item.title}</h3>
+              <p className="text-sm leading-relaxed text-muted">{item.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-2 gap-6 rounded-3xl bg-navy px-6 py-10 text-center shadow-xl sm:grid-cols-4 sm:gap-0 sm:divide-x sm:divide-white/15">
           {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="p-6 bg-blue-50 rounded-lg shadow-md hover:bg-blue-100 transition"
-            >
-              <h4 className="text-3xl font-bold text-blue-600">
+            <div key={i} className="px-4">
+              <h4 className="text-4xl font-extrabold text-accent md:text-5xl">
                 {counters[i]}
                 {stat.suffix}
               </h4>
-              <p className="text-gray-700 mt-2">{stat.label}</p>
+              <p className="mt-2 text-sm font-medium uppercase tracking-wider text-white/80">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>

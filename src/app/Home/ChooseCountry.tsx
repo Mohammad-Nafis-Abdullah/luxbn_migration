@@ -1,8 +1,6 @@
 "use client";
 
 import { CountryCard } from "@/global/CountryCard";
-import { Divider } from "@mantine/core";
-import { useViewportSize } from "@mantine/hooks";
 
 // demo data
 const data: {
@@ -56,27 +54,21 @@ const data: {
 ];
 
 export function ChooseCountry() {
-    const { width } = useViewportSize();
     return (
         <div
-            className="p-5 pt-24 max-w-6xl mx-auto"
+            className="p-5 pt-24 max-w-6xl mx-auto scroll-mt-20"
             id="study-abroad"
         >
-            <section className="flex flex-col lg:flex-row gap-10 pb-12">
-                <h3 className="text-5xl text-center sm:whitespace-nowrap font-bold">
-                    Choose Your Country
-                </h3>
-                {width >= 1024 ? (
-                    <Divider color="black" size="md" orientation="vertical" />
-                ) : (
-                    <div className="bg-gray-800 h-1 rounded-full w-48 mx-auto" />
-                )}
-                <article>
+            <section className="pb-12 text-center max-w-2xl mx-auto flex flex-col items-center">
+                <span className="section-eyebrow">Destinations</span>
+                <h3 className="section-title mt-2">Choose Your Country</h3>
+                <div className="section-bar" />
+                <p className="section-lead mt-5">
                     NHP processes Student Visa, Student Spouse Visa and Parents
                     Visitors Visa for UK, USA, Canada, Australia and Malaysia.
-                </article>
+                </p>
             </section>
-            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-5">
+            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-6">
                 {data.map((v, i) => (
                     <CountryCard
                         key={i}

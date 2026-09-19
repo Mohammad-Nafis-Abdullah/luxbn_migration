@@ -8,12 +8,15 @@ const PHONE_HREF = "tel:+447352991215";
 const DPO_NAME = "Monjur E Alahi Chowdhury";
 const DPO_EMAIL = "Monjur1000980@gmail.com";
 
-const linkClass = "text-red-600 underline";
+const linkClass =
+    "font-medium text-primary underline underline-offset-2 transition-colors hover:text-navy";
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
     return (
         <section>
-            <h2 className="text-xl font-semibold text-blue-600 mb-2">{title}</h2>
+            <h2 className="mb-3 border-l-4 border-accent pl-3 text-xl font-bold text-navy">
+                {title}
+            </h2>
             <div className="space-y-3">{children}</div>
         </section>
     );
@@ -34,7 +37,7 @@ function Table({ head, rows }: { head: [string, string]; rows: [string, string][
         <div className="overflow-x-auto">
             <table className="w-full border-collapse text-sm">
                 <thead>
-                    <tr className="bg-gray-100">
+                    <tr className="bg-secondary text-navy">
                         <th className="border border-gray-300 px-3 py-2 text-left">{head[0]}</th>
                         <th className="border border-gray-300 px-3 py-2 text-left">{head[1]}</th>
                     </tr>
@@ -54,12 +57,18 @@ function Table({ head, rows }: { head: [string, string]; rows: [string, string][
 
 export default function Privacy() {
     return (
-        <div className="min-h-screen bg-gray-50">
-            <main className="max-w-4xl mx-auto px-5 md:px-10 py-10 md:py-16">
-                <h1 className="text-3xl font-bold text-red-600 mb-2">Privacy Policy</h1>
-                <p className="text-gray-500 mb-8">Last updated: 19 September 2026</p>
+        <div className="min-h-screen bg-surface pb-16">
+            {/* Page banner */}
+            <section className="bg-gradient-to-r from-navy-dark via-navy to-primary-dark px-5 pt-16 pb-24 text-center text-white">
+                <span className="section-eyebrow !text-accent">Your data, your rights</span>
+                <h1 className="mt-2 text-4xl font-extrabold md:text-5xl">Privacy Policy</h1>
+                <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-accent" />
+                <p className="mt-5 text-sm text-white/80">Last updated: 19 September 2026</p>
+            </section>
 
-                <div className="space-y-8 text-gray-800 leading-relaxed">
+            <main className="-mt-10 mx-auto max-w-4xl px-4">
+              <div className="rounded-2xl bg-white p-6 shadow-lg md:p-12">
+                <div className="space-y-10 text-ink leading-relaxed">
                     <div className="space-y-3">
                         <p>
                             This Privacy Policy explains how {COMPANY} (“the Company”, “we”,
@@ -443,6 +452,7 @@ export default function Privacy() {
                         </p>
                     </Section>
                 </div>
+              </div>
             </main>
         </div>
     );

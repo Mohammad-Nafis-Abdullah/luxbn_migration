@@ -155,84 +155,118 @@ const scholarships: scholarship_schema = {
 };
 
 const countries = [
-    { id: "uk", name: "UK", icon: "🎓" },
-    { id: "usa", name: "USA", icon: "🎓" },
-    { id: "canada", name: "Canada", icon: "🎓" },
-    { id: "australia", name: "Australia", icon: "🎓" },
-    { id: "eu", name: "EU", icon: "🎓" },
+    { id: "uk", name: "UK" },
+    { id: "usa", name: "USA" },
+    { id: "canada", name: "Canada" },
+    { id: "australia", name: "Australia" },
+    { id: "eu", name: "EU" },
 ];
 
 export default function Scholarship() {
     const [activeCountry, setActiveCountry] = useState("uk");
+    const activeName =
+        countries.find((c) => c.id === activeCountry)?.name ?? activeCountry;
 
     return (
-        <div className="min-h-screen flex bg-gray-50">
-            {/* Sidebar */}
-            <aside className="w-24 md:w-48 border-r bg-white shadow-sm">
-                <ul className="flex md:flex-col justify-between md:justify-start overflow-x-auto">
-                    {countries.map((country) => (
-                        <li
-                            key={country.id}
-                            className={`flex flex-col items-center md:items-start px-4 py-5 cursor-pointer hover:bg-gray-100 ${
-                                activeCountry === country.id
-                                    ? "text-red-600 font-bold border-l-4 border-red-600"
-                                    : "text-gray-700"
-                            }`}
-                            onClick={() => setActiveCountry(country.id)}
-                        >
-                            <span className="text-2xl md:text-xl">
-                                {country.icon}
-                            </span>
-                            <span className="text-sm md:ml-2 md:mt-1">
-                                {country.name}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-            </aside>
-
-            {/* Content */}
-            <main className="flex-1 p-5 md:p-10">
-                <h1 className="text-2xl font-bold mb-6 capitalize">
-                    {activeCountry} Scholarships
+        <div className="min-h-screen bg-surface">
+            {/* Page banner */}
+            <section className="bg-gradient-to-r from-navy-dark via-navy to-primary-dark px-5 py-16 text-center text-white">
+                <span className="section-eyebrow !text-accent">
+                    Funding your future
+                </span>
+                <h1 className="mt-2 text-4xl font-extrabold md:text-5xl">
+                    Scholarships
                 </h1>
-                <div className="space-y-8">
-                    {scholarships[activeCountry]?.map((uni, i) => (
-                        <div
-                            key={i}
-                            className="flex flex-col md:flex-row bg-white rounded-xl shadow-md hover:shadow-lg transition p-5"
-                        >
-                            {/* Text */}
-                            <div className="flex-1">
-                                <h2 className="text-lg font-semibold text-red-600">
-                                    {uni.name}
-                                </h2>
-                                <p className="text-gray-700 mt-2">
-                                    {uni.description}
-                                </p>
+                <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-accent" />
+                <p className="mx-auto mt-5 max-w-2xl text-white/80">
+                    Explore scholarships offered by our partner universities and
+                    find the one that fits your destination and budget.
+                </p>
+            </section>
 
-                                <h3 className="text-blue-600 font-medium mt-4">
-                                    Scholarship Details
-                                </h3>
-                                <ul className="list-disc pl-5 text-gray-800 mt-1">
-                                    <li>{uni.scholarship}</li>
-                                    <li>Tuition Fees: {uni.tuitionFees}</li>
-                                    <li>{uni.extraDetails}</li>
-                                </ul>
-                            </div>
-
-                            {/* Logo */}
-                            <div className="md:w-40 flex justify-center items-center mt-4 md:mt-0">
-                                <img
-                                    src={uni.logo}
-                                    alt={uni.name}
-                                    className="max-h-20 object-contain"
-                                />
-                            </div>
-                        </div>
-                    ))}
+            <div className="mx-auto max-w-5xl px-5 pb-16">
+                {/* Country tabs, overlapping the banner */}
+                <div
+                    role="tablist"
+                    aria-label="Scholarships by country"
+                    className="-mt-6 flex justify-start gap-2 overflow-x-auto rounded-full bg-white p-2 shadow-lg sm:justify-center"
+                >
+                    {countries.map((country) => {
+                        const isActive = activeCountry === country.id;
+                        return (
+                            <button
+                                key={country.id}
+                                type="button"
+                                role="tab"
+                                aria-selected={isActive}
+                                onClick={() => setActiveCountry(country.id)}
+                                className={`shrink-0 cursor-pointer rounded-full px-6 py-2.5 text-sm font-bold uppercase tracking-wider transition duration-300 ${
+                                    isActive
+                                        ? "bg-navy text-white shadow-md"
+                                        : "text-navy hover:bg-secondary"
+                                }`}
+                            >
+                                {country.name}
+                            </button>
+                        );
+                    })}
                 </div>
-            </main>
+
+                {/* Content */}
+                <main className="mt-12">
+                    <h2 className="section-title mb-2">
+                        {activeName}{" "}
+                        <span className="text-primary">Scholarships</span>
+                    </h2>
+                    <div className="section-bar mb-8" />
+
+                    <div className="space-y-6">
+                        {scholarships[activeCountry]?.map((uni) => (
+                            <article
+                                key={uni.name}
+                                className="flex flex-col gap-6 rounded-2xl border-l-4 border-primary bg-white p-6 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl md:flex-row md:p-8"
+                            >
+                                {/* Text */}
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-bold text-navy">
+                                        {uni.name}
+                                    </h3>
+                                    <p className="mt-2 leading-relaxed text-muted">
+                                        {uni.description}
+                                    </p>
+
+                                    <div className="mt-5 rounded-xl bg-secondary/60 p-4">
+                                        <p className="text-xs font-bold uppercase tracking-widest text-primary">
+                                            Scholarship
+                                        </p>
+                                        <p className="mt-1 font-bold text-navy">
+                                            {uni.scholarship}
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                                        <span className="rounded-full bg-navy px-4 py-1.5 font-medium text-white">
+                                            Tuition: {uni.tuitionFees}
+                                        </span>
+                                        <span className="rounded-full bg-surface px-4 py-1.5 font-medium text-muted ring-1 ring-gray-200">
+                                            {uni.extraDetails}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Logo */}
+                                <div className="flex items-center justify-center rounded-xl bg-surface p-4 md:w-44">
+                                    <img
+                                        src={uni.logo}
+                                        alt={uni.name}
+                                        className="max-h-20 object-contain"
+                                    />
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </main>
+            </div>
         </div>
     );
 }

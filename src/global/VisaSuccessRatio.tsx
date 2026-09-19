@@ -11,10 +11,12 @@ const data = [
 export function VisaSuccessRatio() {
     return (
         <div>
-            <h3 className="text-4xl font-bold mb-2">
+            <span className="section-eyebrow">Track record</span>
+            <h3 className="section-title mt-2">
                 Visa Success <span className="text-primary">Ratio</span>
             </h3>
-            <p className="text-primary">
+            <div className="section-bar mb-4" />
+            <p className="section-lead">
                 We have a very good visa success rates due to our very
                 professional commitment towards our students.
             </p>
@@ -26,7 +28,7 @@ export function VisaSuccessRatio() {
                 orientation="vertical"
                 yAxisProps={{ width: 70 }}
                 series={[
-                    { name: "rate", color: "#819A91" },
+                    { name: "rate", color: "#0e7c86" },
                 ]}
                 // withBarValueLabel={false}
                 // withLegend={false}

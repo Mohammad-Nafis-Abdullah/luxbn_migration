@@ -30,32 +30,45 @@ const universities: { id: number; img: string }[] = [
 
 export default function Universities() {
   return (
-    <div className="py-20 mx-auto max-w-[1200px] px-4">
-      {/* Title */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#001F4D]">
+    <div className="min-h-screen bg-surface pb-20">
+      {/* Page banner */}
+      <section className="bg-gradient-to-r from-navy-dark via-navy to-primary-dark px-5 pt-16 pb-24 text-center text-white">
+        <span className="section-eyebrow !text-accent">Our network</span>
+        <h1 className="mt-2 text-4xl font-extrabold md:text-5xl">
           Our Partner Universities
-        </h2>
-        <div className="mt-3 w-20 h-1 bg-[#001F4D] mx-auto rounded-full"></div>
-        <p className="text-gray-500 mt-2 text-sm md:text-base">
+        </h1>
+        <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-accent" />
+        <p className="mx-auto mt-5 max-w-2xl text-white/80">
           Collaborating with top institutions worldwide
         </p>
-      </div>
+      </section>
 
-      {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-        {universities.map((uni) => (
-          <div
-            key={uni.id}
-            className="bg-white rounded-xl shadow-md p-6 flex items-center justify-center border border-gray-100 hover:border-[#001F4D] hover:shadow-xl transform hover:scale-105 transition duration-300"
-          >
-            <img
-              src={uni.img}
-              alt="University Logo"
-              className="w-28 h-auto object-contain grayscale hover:grayscale-0 transition"
-            />
-          </div>
-        ))}
+      <div className="mx-auto max-w-6xl px-4">
+        {/* Count badge, overlapping the banner */}
+        <div className="-mt-7 mx-auto flex w-fit items-center gap-3 rounded-full bg-white px-8 py-3 shadow-lg">
+          <span className="text-3xl font-extrabold text-primary">
+            {universities.length}
+          </span>
+          <span className="text-sm font-bold uppercase tracking-wider text-navy">
+            Partner institutions
+          </span>
+        </div>
+
+        {/* Grid */}
+        <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+          {universities.map((uni) => (
+            <div
+              key={uni.id}
+              className="group flex items-center justify-center rounded-2xl border-b-4 border-transparent bg-white p-6 shadow-md transition duration-300 hover:-translate-y-1.5 hover:border-accent hover:shadow-xl sm:p-8"
+            >
+              <img
+                src={uni.img}
+                alt="University Logo"
+                className="h-auto w-28 object-contain opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

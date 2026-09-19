@@ -3,7 +3,7 @@ import { Button, Input, LoadingOverlay, Textarea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { FormEvent, useState } from "react";
 
-const mailFormat = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com)$/g;
+const mailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function GeneralEnquiry() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,10 +42,10 @@ export function GeneralEnquiry() {
     }
     return (
         <div className="">
-            <h3 className="text-4xl font-bold mb-2">
+            <h3 className="section-title mb-2">
                 General <span className="text-primary">Enquiry</span>
             </h3>
-            <p className="text-primary">
+            <p className="section-lead">
                 If you wish to make a query, please complete the form below and
                 submit.
             </p>
@@ -95,7 +95,7 @@ export function GeneralEnquiry() {
                         type="submit"
                         variant="filled"
                         size="md"
-                        color="#819A91"
+                        color="#0e7c86"
                     >
                         Send
                     </Button>

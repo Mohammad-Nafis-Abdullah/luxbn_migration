@@ -1,44 +1,47 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Affix, Burger, Drawer, Transition } from "@mantine/core";
-import {
-    useDisclosure,
-    useWindowScroll,
-    UseWindowScrollTo,
-} from "@mantine/hooks";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { useRouter } from "next/navigation";
-import { FaAngleUp } from "react-icons/fa6";
-import { SiNextdotjs } from "react-icons/si";
+import { useDisclosure, useWindowScroll } from "@mantine/hooks";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FaAngleUp, FaGraduationCap } from "react-icons/fa6";
 
-// @flow
+const links: { label: string; href: string }[] = [
+    { label: "Home", href: "/" },
+    { label: "Study Abroad", href: "/#study-abroad" },
+    { label: "Scholarship", href: "/scholarship" },
+    { label: "University", href: "/universities" },
+    { label: "Contact", href: "/contact-us" },
+];
+
 export function Header() {
-    const router = useRouter();
+    const pathname = usePathname();
     const [opened, { close, toggle }] = useDisclosure(false);
     const [scroll, scrollTo] = useWindowScroll();
 
     return (
-        <header className="bg-white sticky top-0 left-0 right-0 text-black shadow-xs z-50">
-            <div className="max-w-6xl px-3 py-5 mx-auto flex justify-between items-center">
-                <span
-                    onClick={() => {
-                        router.push("/");
-                        // scrollTo({ y: 0 });
-                    }}
-                    className="inline-flex items-center gap-3 cursor-pointer"
-                >
-                    <SiNextdotjs className="size-12" />
-                    <h3 className="text-xl font-bold">LUXBN MIGRATION</h3>
-                </span>
+        <header className="bg-white/95 backdrop-blur sticky top-0 left-0 right-0 shadow-sm z-50">
+            <div className="max-w-6xl px-4 py-4 mx-auto flex justify-between items-center">
+                <Link href="/" className="inline-flex items-center gap-3">
+                    <span className="grid size-11 place-items-center rounded-xl bg-navy text-accent shadow-md">
+                        <FaGraduationCap className="size-6" />
+                    </span>
+                    <span className="leading-tight">
+                        <span className="block text-xl font-extrabold tracking-wide text-navy">
+                            LUXBN
+                        </span>
+                        <span className="block text-[0.65rem] font-bold uppercase tracking-[0.3em] text-primary">
+                            Migration
+                        </span>
+                    </span>
+                </Link>
 
                 {/* pc navbar */}
-                <nav className="hidden gap-5 lg:inline-flex *:cursor-pointer">
-                    <NavOptions
-                        router={router}
-                        close={close}
-                        scrollTo={scrollTo}
-                    />
+                <nav className="hidden lg:flex items-center gap-8">
+                    <NavOptions pathname={pathname} onNavigate={close} />
+                    <Link href="/contact-us" className="btn-accent !py-2.5">
+                        Free Consultation
+                    </Link>
                 </nav>
 
                 {/* mobile navbar */}
@@ -47,6 +50,7 @@ export function Header() {
                         opened={opened}
                         onClick={toggle}
                         aria-label="Toggle navigation"
+                        color="#001f4d"
                     />
                     <Drawer
                         radius="sm"
@@ -56,12 +60,15 @@ export function Header() {
                         size={"xs"}
                         title=""
                     >
-                        <nav className="*:cursor-pointer flex flex-col px-3 gap-5">
-                            <NavOptions
-                                router={router}
-                                close={close}
-                                scrollTo={scrollTo}
-                            />
+                        <nav className="flex flex-col px-3 gap-5">
+                            <NavOptions pathname={pathname} onNavigate={close} />
+                            <Link
+                                href="/contact-us"
+                                onClick={close}
+                                className="btn-accent mt-2"
+                            >
+                                Free Consultation
+                            </Link>
                         </nav>
                     </Drawer>
                 </nav>
@@ -69,11 +76,15 @@ export function Header() {
             <Affix position={{ bottom: 20, right: 20 }}>
                 <Transition transition="slide-up" mounted={scroll.y > 0}>
                     {(transitionStyles) => (
-                        <FaAngleUp
+                        <button
+                            type="button"
+                            aria-label="Back to top"
                             style={transitionStyles}
                             onClick={() => scrollTo({ y: 0 })}
-                            className="cursor-pointer size-10 rounded-full bg-primary text-white p-2 ring-2 ring-primary ring-offset-2"
-                        />
+                            className="grid size-11 cursor-pointer place-items-center rounded-full bg-navy text-accent shadow-lg ring-2 ring-accent ring-offset-2 transition hover:bg-primary hover:text-white"
+                        >
+                            <FaAngleUp className="size-5" />
+                        </button>
                     )}
                 </Transition>
             </Affix>
@@ -82,70 +93,28 @@ export function Header() {
 }
 
 function NavOptions({
-    router,
-    close,
-    scrollTo,
+    pathname,
+    onNavigate,
 }: {
-    router: AppRouterInstance;
-    close: () => void;
-    scrollTo: UseWindowScrollTo;
+    pathname: string;
+    onNavigate: () => void;
 }) {
     return (
         <>
-            <span
-                onClick={() => {
-                    router.push("/");
-                    close();
-                    // scrollTo({ y: 0 });
-                }}
-                className={`font-bold`}
-            >
-                HOME
-            </span>
-            <span
-                onClick={(e) => {
-                    e.preventDefault();
-                    router.push("/#study-abroad");
-                    close();
-                    const section = document.getElementById("study-abroad");
-                    section?.scrollIntoView({
-                        behavior: "smooth",
-                    });
-                }}
-                className={`font-bold scroll-smooth `}
-            >
-                STUDY ABROAD
-            </span>
-            <span
-                onClick={(e) => {
-                    e.preventDefault();
-                    router.push("/scholarship");
-                    close();
-                }}
-                className={`font-bold `}
-            >
-                SCHOLARSHIP
-            </span>
-            <span
-                onClick={() => {
-                    router.push("/universities");
-                    close();
-                    // scrollTo({ y: 0 });
-                }}
-                className={`font-bold`}
-            >
-                UNIVERSITY
-            </span>
-            <span
-                onClick={() => {
-                    router.push("/contact-us");
-                    close();
-                    // scrollTo({ y: 0 });
-                }}
-                className={`font-bold `}
-            >
-                CONTACT
-            </span>
+            {links.map(({ label, href }) => {
+                // "/#study-abroad" is a hash link on the home page, so only plain paths get an active state
+                const isActive = !href.includes("#") && pathname === href;
+                return (
+                    <Link
+                        key={href}
+                        href={href}
+                        onClick={onNavigate}
+                        className={`nav-link ${isActive ? "active_link" : ""}`}
+                    >
+                        {label}
+                    </Link>
+                );
+            })}
         </>
     );
 }

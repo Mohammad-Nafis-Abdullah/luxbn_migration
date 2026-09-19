@@ -13,14 +13,15 @@ export function OurRingProgress({ title, value }: OurRingProgress_props) {
                 roundCaps
                 size={160}
                 thickness={7}
-                sections={[{ value: value, color: "dark" }]}
+                sections={[{ value: value, color: "#0e7c86" }]}
+                rootColor="#d9eef0"
                 label={
-                    <p className="text-center text-4xl bg-transparent text-primary">
+                    <p className="text-center text-4xl font-bold bg-transparent text-navy">
                         {value}%
                     </p>
                 }
             />
-            <span className="text-lg font-medium text-center tracking-wider text-primary ">
+            <span className="text-lg font-semibold text-center tracking-wider text-navy ">
                 {title}
             </span>
         </section>

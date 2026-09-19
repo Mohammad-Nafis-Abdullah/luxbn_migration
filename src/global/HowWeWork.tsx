@@ -3,15 +3,17 @@ import { Text, Timeline, TimelineItem } from "@mantine/core";
 export function HowWeWork() {
     return (
         <div>
-            <h3 className="text-4xl font-bold mb-2">
+            <span className="section-eyebrow">Our process</span>
+            <h3 className="section-title mt-2">
                 How We <span className="text-primary">Work?</span>
             </h3>
-            <p className="text-primary">
+            <div className="section-bar mb-4" />
+            <p className="section-lead">
                 It is very easy to apply through NHP Education Consultants. It
                 starts from career counselling and ends in pre-departure
                 orientation.
             </p>
-            <Timeline color="teal" active={3} lineWidth={4} bulletSize={20} className="mt-8">
+            <Timeline color="#0e7c86" active={3} lineWidth={4} bulletSize={20} className="mt-8">
                 <TimelineItem
                     title="Career Counselling"
                     className="p-3 bg-secondary/30 max-w-xs rounded-sm"

@@ -22,18 +22,31 @@ const MapLocation = dynamic(
 
 export default function ContactUs() {
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-800 pb-10">
-            {/* map location section */}
-            <MapLocation />
-            {/* Contact Info Section */}
-            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 mt-20">
+        <div className="min-h-screen bg-surface text-ink pb-16">
+            {/* Page banner */}
+            <section className="bg-gradient-to-r from-navy-dark via-navy to-primary-dark px-5 pt-16 pb-28 text-center text-white">
+                <span className="section-eyebrow !text-accent">
+                    We&apos;d love to hear from you
+                </span>
+                <h1 className="mt-2 text-4xl font-extrabold md:text-5xl">
+                    Contact Us
+                </h1>
+                <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-accent" />
+                <p className="mx-auto mt-5 max-w-2xl text-white/80">
+                    Questions about admissions, visas or scholarships? Get in
+                    touch and one of our counsellors will get back to you.
+                </p>
+            </section>
+
+            {/* Contact Info Section, overlapping the banner */}
+            <div className="-mt-16 mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-3">
                 {/* Card: Call Us */}
-                <div className="bg-white shadow-md rounded-xl p-8 flex flex-col items-center space-y-3 hover:shadow-lg transition">
-                    <FaPhone className="text-4xl text-[#001F4D]" />
-                    <h3 className="text-xl font-bold text-[#001F4D]">
-                        Call Us
-                    </h3>
-                    <p className="text-center text-sm text-gray-600 leading-relaxed">
+                <div className="flex flex-col items-center space-y-3 rounded-2xl bg-white p-8 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <span className="grid size-16 place-items-center rounded-full bg-secondary text-primary">
+                        <FaPhone className="text-2xl" />
+                    </span>
+                    <h3 className="text-xl font-bold text-navy">Call Us</h3>
+                    <p className="text-center text-sm leading-relaxed text-muted">
                         <span className="font-semibold">Phone:</span> <br />
                         +44 7342817542, +8801303043453 <br />
                         +8801889193550
@@ -41,10 +54,12 @@ export default function ContactUs() {
                 </div>
 
                 {/* Card: Office Location */}
-                <div className="bg-[#001F4D] shadow-md rounded-xl p-8 flex flex-col items-center space-y-3 text-white hover:shadow-lg transition">
-                    <FaMapMarkerAlt className="text-4xl text-red-500" />
+                <div className="flex flex-col items-center space-y-3 rounded-2xl bg-navy p-8 text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <span className="grid size-16 place-items-center rounded-full bg-white/10 text-accent">
+                        <FaMapMarkerAlt className="text-2xl" />
+                    </span>
                     <h3 className="text-xl font-bold">Office Location</h3>
-                    <p className="text-center text-sm leading-relaxed">
+                    <p className="text-center text-sm leading-relaxed text-white/80">
                         G13A, Manchester, M22 5TG <br />
                         Manchester Business Park, Manchester, <br />
                         UK
@@ -52,41 +67,59 @@ export default function ContactUs() {
                 </div>
 
                 {/* Card: Email Us */}
-                <div className="bg-white shadow-md rounded-xl p-8 flex flex-col items-center space-y-3 hover:shadow-lg transition">
-                    <FaEnvelope className="text-4xl text-[#001F4D]" />
-                    <h3 className="text-xl font-bold text-[#001F4D]">
-                        Email Us
-                    </h3>
-                    <p className="text-center text-sm text-gray-600 leading-relaxed">
+                <div className="flex flex-col items-center space-y-3 rounded-2xl bg-white p-8 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <span className="grid size-16 place-items-center rounded-full bg-secondary text-primary">
+                        <FaEnvelope className="text-2xl" />
+                    </span>
+                    <h3 className="text-xl font-bold text-navy">Email Us</h3>
+                    <p className="text-center text-sm leading-relaxed text-muted">
                         <span className="font-semibold">Mail: </span>
-                        mdsac@luxbn.com
+                        <a
+                            href="mailto:mdsac@luxbn.com"
+                            className="transition-colors hover:text-primary"
+                        >
+                            mdsac@luxbn.com
+                        </a>
                     </p>
                 </div>
             </div>
 
-            {/* Social + Enquiry Form */}
-            <div className="max-w-4xl mx-auto mt-16 px-4 text-center">
-                {/* Social Links */}
-                <h2 className="text-2xl font-bold text-[#001F4D] mb-2">
-                    SOCIALISE{" "}
-                    <span className="font-normal text-gray-400">WITH US</span>
-                </h2>
-                <div className="flex justify-center space-x-4 mb-8">
-                    {[FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube].map(
-                        (Icon, idx) => (
-                            <a
-                                key={idx}
-                                href="#"
-                                className="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full text-gray-600 hover:bg-[#001F4D] hover:text-white transition"
-                            >
-                                <Icon />
-                            </a>
-                        )
-                    )}
-                </div>
-
-                {/* Form */}
+            {/* Enquiry form + map */}
+            <div className="mx-auto mt-16 grid max-w-6xl items-start gap-8 px-4 lg:grid-cols-2">
                 <QueryForm />
+
+                <div className="space-y-6">
+                    <div className="overflow-hidden rounded-2xl bg-white shadow-lg">
+                        <MapLocation />
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="rounded-2xl bg-white p-6 text-center shadow-lg">
+                        <h2 className="mb-4 text-xl font-bold text-navy">
+                            SOCIALISE{" "}
+                            <span className="font-normal text-gray-400">
+                                WITH US
+                            </span>
+                        </h2>
+                        <div className="flex justify-center gap-4">
+                            {[
+                                { label: "Facebook", Icon: FaFacebookF },
+                                { label: "Twitter", Icon: FaTwitter },
+                                { label: "LinkedIn", Icon: FaLinkedinIn },
+                                { label: "YouTube", Icon: FaYoutube },
+                            ].map(({ label, Icon }) => (
+                                <a
+                                    key={label}
+                                    href="#"
+                                    aria-label={label}
+                                    className="grid size-11 place-items-center rounded-full bg-secondary text-primary transition duration-300 hover:-translate-y-1 hover:bg-navy hover:text-accent"
+                                >
+                                    <Icon />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

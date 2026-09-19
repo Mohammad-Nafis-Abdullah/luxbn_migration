@@ -29,7 +29,7 @@ export function CountryCard({ src, country, title, message }: CountryCard_props)
           body: "pt-3",
         }}
         title={
-          <Title order={2} className="text-blue-600 text-center w-full">
+          <Title order={2} className="text-navy text-center w-full">
             Study in {country}
           </Title>
         }
@@ -51,14 +51,16 @@ export function CountryCard({ src, country, title, message }: CountryCard_props)
       {/* Card */}
       <Card
         onClick={open}
-        className="flex flex-col items-center gap-3 hover:drop-shadow-lg transition cursor-pointer rounded-xl bg-white border border-gray-200 hover:border-blue-400"
+        className="group flex flex-col items-center gap-3 cursor-pointer rounded-2xl bg-white border-t-4 !border-t-transparent transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:!border-t-accent"
         shadow="sm"
-        padding="lg"
-        radius="md"
+        padding="xl"
+        radius="lg"
         withBorder
       >
-        <img src={src} alt={country} className="w-12 h-12 object-contain" />
-        <h5 className="font-bold tracking-wide text-center text-gray-800">
+        <span className="grid size-20 place-items-center rounded-full bg-secondary ring-4 ring-white shadow-inner transition duration-300 group-hover:scale-110">
+          <img src={src} alt={country} className="size-12 object-contain" />
+        </span>
+        <h5 className="text-lg font-bold tracking-wide text-center text-navy">
           {title}
         </h5>
         <Group justify="space-between" mb="xs">
@@ -66,6 +68,9 @@ export function CountryCard({ src, country, title, message }: CountryCard_props)
             {message.slice(0, 100)}...
           </Text>
         </Group>
+        <span className="mt-auto text-sm font-bold uppercase tracking-wider text-primary transition-all duration-300 group-hover:tracking-[0.15em]">
+          Learn more &rarr;
+        </span>
       </Card>
     </>
   );

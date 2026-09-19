@@ -12,11 +12,13 @@ import { Footer } from "@/global/Footer";
 const roboto = Roboto({
     variable: "--font-roboto",
     subsets: ["latin"],
+    weight: ["400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
     title: "LUXBN MIGRATION",
-    description: "",
+    description:
+        "Luxbn Migration helps students with university admissions, student visas and scholarships for the UK, USA, Canada, Australia and Malaysia.",
 };
 
 export default function RootLayout({

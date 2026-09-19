@@ -8,13 +8,15 @@ export function WhyDifferent() {
             <div className="p-5 py-18 max-w-6xl mx-auto">
                 <section className="space-y-8 max-w-3xl backdrop-brightness">
                     <article className="space-y-5">
-                        <h3 className="font-medium text-5xl">
+                        <span className="section-eyebrow">Our promise</span>
+                        <h3 className="section-title !text-4xl md:!text-5xl">
                             Why we are different?
                         </h3>
-                        <h5 className="font-medium">
+                        <div className="section-bar" />
+                        <h5 className="text-lg font-semibold text-primary">
                             What makes us different makes us better.
                         </h5>
-                        <p className="text-primary">
+                        <p className="section-lead">
                             We are distinctive in the quality of our services
                             and stand out of the crowd. Unlike other consultancy
                             firms in Bangladesh, we really care for our
