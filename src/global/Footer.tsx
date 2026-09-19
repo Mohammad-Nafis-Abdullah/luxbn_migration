@@ -2,6 +2,7 @@
 
 import { Container, Text } from "@mantine/core";
 import { FaPhoneAlt, FaEnvelope, FaHome, FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -59,8 +60,13 @@ export function Footer() {
         </div>
 
         {/* Bottom line */}
-        <div className="mt-6 text-center text-xs text-gray-400">
-          © {new Date().getFullYear()} Luxbn Ltd. All rights reserved.
+        <div className="mt-6 flex flex-col items-center gap-2 text-center text-xs text-gray-400">
+          <Link href="/privacy" className="hover:text-white">
+            Privacy Policy
+          </Link>
+          <span>
+            © {new Date().getFullYear()} Luxbn Ltd. All rights reserved.
+          </span>
         </div>
       </Container>
     </footer>
